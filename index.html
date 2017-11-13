@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>晃瞎你双眼</title>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+	<script type="text/javascript">
+	var randomColor, randomHeight, randomWidth;
+
+	function changeTrangel () {
+		//生成随机颜色
+		randomColor = '#'+Math.floor(Math.random()*(2<<23)).toString(16); 
+		//生成随机高度
+		randomHeight = Math.floor(Math.random()*($(".container").height()))+200+'px';
+		//生成随机宽度
+		randomWidth = Math.floor(Math.random()*($(".container").width()))+500+'px';
+		// console.log(randomColor,randomHeight,randomWidth,'===container');
+		$(".box1")
+			.css("background-color",randomColor)
+			.css("height",randomHeight)
+			.css("width",randomWidth);
+		$(".colorholder").text(randomColor)
+	}
+
+	var int=self.setInterval("changeTrangel()",100);
+
+	function startChange () {
+		 window.location.reload();
+	}
+		
+	function stopChange () {
+		int=window.clearInterval(int)
+	}
+
+	
+	</script>
+	<style type="text/css">
+		.container{
+			margin: 30px;
+			width: 80%;
+		}
+	</style>
+</head>
+<body>
+<h1>看看你的幸运颜色</h1>
+<button  class='button' id="buttonstart"  onclick="startChange()">开始</button>
+<button  class='button' id="buttonstop" onclick="stopChange()" >停止</button>
+<h2 class="colorholder"></h2>
+<div class="container">
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+</div>
+
+
+</body>
+</html>
